@@ -9,5 +9,5 @@ Chrome extension that replaces occurrences of 'Mike Pence' with 'Darth Pence'
 
 ------------
 
-In Chrome, choose Window > Extensions.  Drag SithToPence.crx into the page that appears.
+In Chrome, choose Window > Extensions.  Drag pencetosith.crx into the page that appears.
 
