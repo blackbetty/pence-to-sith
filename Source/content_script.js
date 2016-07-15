@@ -1,22 +1,32 @@
-// Nick - You have to wait until the body actually is loaded.
-setTimeout(function() {
-	walk(document.body);
-}, 1000)
+var observeDOM = (function(){
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
+        eventListenerSupported = window.addEventListener;
+
+    return function(obj, callback){
+        if( MutationObserver ){
+            // define a new observer
+            var obs = new MutationObserver(function(mutations, observer){
+                if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
+                    callback();
+            });
+            // have the observer observe foo for changes in children
+            obs.observe( obj, { childList:true, subtree:true });
+        }
+        else if( eventListenerSupported ){
+            obj.addEventListener('DOMNodeInserted', callback, false);
+            obj.addEventListener('DOMNodeRemoved', callback, false);
+        }
+    }
+})();
+
+// Observe a specific DOM element:
+observeDOM( document.body ,function(){ 
+    walk(document.body);
+});
 
 function walk(node) 
 {
-	//I then stole it from Cloud to Butt - Dan
-	// I stole this function from here:
-	// http://is.gd/mwZp7E
-	
 	var child, next;
-	
-	/*
-	Nick - Not sure what this bit of code does.
-	if (node.tagName.toLowerCase() == 'input' || node.tagName.toLowerCase() == 'textarea'
-	    || node.classList.indexOf('ace_editor') > -1) {
-		return;
-	}*/
 
 	switch ( node.nodeType )  
 	{
