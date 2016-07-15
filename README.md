@@ -5,7 +5,7 @@ Pence To Sith
 
 Chrome extension that replaces occurrences of 'Mike Pence' with 'Darth Pence'
 
-[Direct download of crx file](https://github.com/panicsteve/cloud-to-butt/blob/master/CloudToButt.crx?raw=true)
+[Direct download of crx file](https://github.com/blackbetty/pence-to-sith/blob/master/pencetosith.crx?raw=true)
 
 ------------
 
